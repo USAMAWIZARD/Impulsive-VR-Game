@@ -12,6 +12,7 @@
   measures the manetic field around it (can point to north) <br>
 </ul>
 <h3>Why we need multiple sensors For  (Sensor Fusion) :</h3>
+    Combining two or more data sources in a way that genrate a better understanding of the system
   <li>https://www.youtube.com/watch?v=6qV3YjFppuc&list=PLn8PRpmsu08ryYoBpEKzoMOveSTyS-h4a</li>
   
 </Html>
