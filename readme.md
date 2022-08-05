@@ -20,5 +20,9 @@
 <h2>Sensor required for our use case :</h2>
 <ul>
   <li>MPU9250 9-Axis Gyro Accelerometer Module X 1 </li>
-
 </ul>
+<h2>Sensor Interfacing protocols<h2>
+<h3>I2C</h3>
+https://www.youtube.com/watch?v=6IAkYpmA1DQ
+![Screenshot (246)](https://user-images.githubusercontent.com/47350008/183148574-f11f3130-2c23-4e88-8c47-5cc44442e43d.png)
+![Screenshot (247)](https://user-images.githubusercontent.com/47350008/183148595-a25e7527-65a8-4612-83fa-b8682e5284c0.png)
