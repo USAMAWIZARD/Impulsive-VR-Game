@@ -25,4 +25,4 @@
 <h3>I2C</h3>
 https://www.youtube.com/watch?v=6IAkYpmA1DQ
 <img src="https://user-images.githubusercontent.com/47350008/183148574-f11f3130-2c23-4e88-8c47-5cc44442e43d.png"></img>
-<img "https://user-images.githubusercontent.com/47350008/183148595-a25e7527-65a8-4612-83fa-b8682e5284c0.png"></img>
+<img src="https://user-images.githubusercontent.com/47350008/183148595-a25e7527-65a8-4612-83fa-b8682e5284c0.png"></img>
