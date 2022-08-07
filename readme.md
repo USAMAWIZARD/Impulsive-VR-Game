@@ -16,8 +16,9 @@
   <li>https://www.youtube.com/watch?v=0rlvvYgmTvI&list=PLn8PRpmsu08ryYoBpEKzoMOveSTyS-h4a&index=2</li>
  <li> https://www.youtube.com/watch?v=eqZgxR6eRjo</li>
 </Html>
-
-<h2>Sensor required for our use case :</h2>
+<H1>Electronics</H1>
+Microcontroler :Node MCU
+<h3>Sensor required:</h3>
 <ul>
   <li>MPU9250 9-Axis Gyro Accelerometer Module X 1 </li>
 </ul>
