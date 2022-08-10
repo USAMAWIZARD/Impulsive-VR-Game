@@ -17,7 +17,8 @@
  <li> https://www.youtube.com/watch?v=eqZgxR6eRjo</li>
 </Html>
 <H1>Electronics</H1>
-Microcontroler :Node MCU
+<h3>Microcontroler:</h3>
+  Node MCU
 <h3>Sensor required:</h3>
 <ul>
   <li>MPU9250 9-Axis Gyro Accelerometer Module X 1 </li>
@@ -27,3 +28,4 @@ Microcontroler :Node MCU
 https://www.youtube.com/watch?v=6IAkYpmA1DQ
 <img src="https://user-images.githubusercontent.com/47350008/183148574-f11f3130-2c23-4e88-8c47-5cc44442e43d.png"></img>
 <img src="https://user-images.githubusercontent.com/47350008/183148595-a25e7527-65a8-4612-83fa-b8682e5284c0.png"></img>
+<h3>SPI</h3>
