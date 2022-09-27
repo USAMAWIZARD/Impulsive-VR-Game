@@ -15,6 +15,7 @@
     Combining two or more data sources in a way that genrate a better understanding of the system
   <li>https://www.youtube.com/watch?v=0rlvvYgmTvI&list=PLn8PRpmsu08ryYoBpEKzoMOveSTyS-h4a&index=2</li>
  <li> https://www.youtube.com/watch?v=eqZgxR6eRjo</li>
+ <li>https://medium.com/@es14btech11011/intro-to-inertial-measurement-unit-imu-part-1-47f19fc7d68d</li>
 </Html>
 <H1>Electronics</H1>
 <h3>Microcontroler:</h3>
