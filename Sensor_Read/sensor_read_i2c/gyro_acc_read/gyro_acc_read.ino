@@ -11,11 +11,11 @@ int8_t status_1;
 int8_t status_2;
 float Yaw;
 int16_t mag_x, mag_y, mag_z;
-
+char sensor_data[20];
 void setup() 
 {
 Wire.begin();
-Wire.setClock(400000); // I2C clock rate ,You can delete it but it helps the speed of I2C (default rate is 100000 Hz)
+//Wire.setClock(400000); // I2C clock rate ,You can delete it but it helps the speed of I2C (default rate is 100000 Hz)
 delay(100);
 // turn Mpu on
 Wire.beginTransmission(Mpu);
@@ -35,11 +35,11 @@ Wire.endTransmission();
 delay(100);
 // Configure Accelerometer
 Wire.beginTransmission(Mpu);
-Wire.write(0x1C); // Accelerometer  Config
-Wire.write(0x0); // (0: 2g (16384 LSB/g); 1: 4g (8192 LSB/g) ; 2: 8g ( 4096 LSB/g) ; 3: 16g (2048 LSB/g)
+Wire.write(0x1C);   // Accelerometer  Config
+Wire.write(0x0);    // (0: 2g (16384 LSB/g); 1: 4g (8192 LSB/g) ; 2: 8g ( 4096 LSB/g) ; 3: 16g (2048 LSB/g)
 Wire.endTransmission();
 
-Serial.begin(9600);  //Setting the baudrate
+Serial.begin(38400);  //Setting the baudrate
 delay(100);
 wifi_connect();
 
@@ -48,10 +48,9 @@ void loop()
 {
 // Get data from MPU
 Wire.beginTransmission(Mpu);
-Wire.write(0x3B); 
+Wire.write(0x3B);
 Wire.endTransmission();
 Wire.requestFrom(Mpu,14,true);
-char sensor_data[40];
 accx=(int16_t)(Wire.read()<<8|Wire.read())/16384.00; // g
 accy=(int16_t)(Wire.read()<<8|Wire.read())/16384.00; // g
 accz=(int16_t)(Wire.read()<<8|Wire.read())/16384.00; // g
@@ -59,10 +58,14 @@ temp=(int16_t)(Wire.read()<<8|Wire.read())/340.00 + 36.53;  // Celsus
 gyrox=(int16_t)(Wire.read()<<8|Wire.read())/250.00; // Dps 
 gyroy=(int16_t)(Wire.read()<<8|Wire.read())/250.00; // Dps 
 gyroz=(int16_t)(Wire.read()<<8|Wire.read())/250.00; // Dp
+
+
+
 sprintf(sensor_data,"%lf,%lf,%lf,%lf,%lf,%lf \n",accx,accy,accz,gyrox,gyroy,gyroz);
 
-send_udp_packet(sensor_data);
-Serial.print(sensor_data);
-
+Udp.beginPacket("192.168.0.105", 9005);
+Udp.write(sensor_data);
+Udp.endPacket();
+//Serial.print(sensor_data);
 
 }
