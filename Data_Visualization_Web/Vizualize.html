@@ -25,6 +25,7 @@
         //display a cube with tween.js
         // set diffrent color to each side of cube
         socket = io.connect()
+        let gyro_x = 0, gyro_y = 0, gyro_z = 0, acc_x = 0, acc_y = 0, acc_z = 0, mag_x = 0, mag_y = 0, mag_z = 0;
 
         var scene = new THREE.Scene();
         var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -55,12 +56,17 @@
             })
         ];
         var cube = new THREE.Mesh(geometry, material);
+        var circle = new THREE.Mesh(new THREE.CircleGeometry(0.5, 32), new THREE.MeshBasicMaterial({
+            color: 0xffff00
+        }));
         cube.scale.set(3, 3, 3);
 
         scene.add(cube);
-        camera.position.z = 5;
+        scene.add(circle);
+        camera.position.z = 10  ;
+        camera.position.y = -10  ;
+        camera.rotation.x =45;
 
-        cube.rotation.x = 0.5;
         renderer.render(scene, camera);
         socket.on("connect", function () {
             console.log("Connected")
@@ -70,21 +76,27 @@
         })
         renderer.render(scene, camera);
 
-        function animate(gyro_rotation_x){
-            cube.rotation.x =3.14;
+        function animate() {
             requestAnimationFrame(animate);
-            renderer.render( scene, camera );
-
+            // console.log(window.gyro_x);
+            cube.rotation.x = acc_y * (Math.PI/0.98);
+            cube.rotation.y =acc_x  * (Math.PI/0.98);
+           // cube.rotation.z =acc_z   * (Math.PI/0.98);
+            renderer.render(scene, camera);
         }
-        var gyro_rotation_x = 0, gyro_rotation_y = 0, gyro_rotation_z = 0;
+        animate();
+
         socket.on("sensor_data", function (sensor_data_string) {
-           // console.log(sensor_data_string);
-            sensor_array = sensor_data_string.split()            
-            gyro_rotation_x += sensor_array[3];
-            gyro_rotation_y += sensor_array[4]
-            gyro_rotation_z += sensor_array[5]
-           animate(gyro_rotation_x);
+            //console.log(sensor_data_string);
+            sensor_array = sensor_data_string.split(',')
+            acc_x = sensor_array[0];
+            acc_y = sensor_array[1];
+            acc_z = sensor_array[2];
+            gyro_x = sensor_array[3];
+            gyro_y = sensor_array[4];
+            gyro_z = sensor_array[5];
         })
+
     </script>
 </body>
 

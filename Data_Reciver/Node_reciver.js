@@ -10,8 +10,8 @@ server.on('error', (err) => {
 
 server.on('message', (msg, rinfo) => {
   message =`${msg}`
-  //console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
- // console.log(message)
+  //=console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+  console.log(message)
   //msg=msg.split(',')
   if (client_connected)
   socket_io.emit("sensor_data",message);
