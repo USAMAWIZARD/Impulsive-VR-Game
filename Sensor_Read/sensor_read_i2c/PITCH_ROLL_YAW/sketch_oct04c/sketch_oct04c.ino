@@ -357,7 +357,7 @@ void setup()
 {
   Wire.begin();
 //  TWBR = 12;  // 400 kbit/sec I2C speed
-  Serial.begin(9600);
+  Serial.begin(38400);
   
 
   // Read the WHO_AM_I register, this is a good test of communication
@@ -666,9 +666,9 @@ void readMagData(int16_t * destination)
   uint8_t rawData[7];  // x/y/z gyro register data, ST2 register stored here, must read ST2 at end of data acquisition
   //read mag
   writeByte(MPU9250_ADDRESS, INT_PIN_CFG, 0x02); //set i2c bypass enable pin to true to access magnetometer
-  delay(10);
+  //delay(10);
   writeByte(AK8963_ADDRESS, 0x0A, 0x01); //enable the magnetometer
-  delay(100);
+//  delay(100);
   if(readByte(AK8963_ADDRESS, AK8963_ST1) & 0x01) { // wait for magnetometer data ready bit to be set
   readBytes(AK8963_ADDRESS, AK8963_XOUT_L, 6, &rawData[0]);  // Read the six raw data and ST2 registers sequentially into data array
   uint8_t c = rawData[6]; // End data read by reading ST2 register
@@ -759,7 +759,7 @@ void initAK8963(float * destination)
   writeByte(AK8963_ADDRESS, AK8963_CNTL, 0x00); // Power down magnetometer  
   delay(10);
   writeByte(AK8963_ADDRESS, AK8963_CNTL, 0x0F); // Enter Fuse ROM access mode
-  delay(10);
+ delay(10);
   readBytes(AK8963_ADDRESS, AK8963_ASAX, 3, &rawData[0]);  // Read the x-, y-, and z-axis calibration values
   destination[0] =  (float)(rawData[0] - 128)/256. + 1.;   // Return x-axis sensitivity adjustment values, etc.
   destination[1] =  (float)(rawData[1] - 128)/256. + 1.;  
@@ -770,7 +770,7 @@ void initAK8963(float * destination)
   // set Mscale bit 4 to 1 (0) to enable 16 (14) bit resolution in CNTL register,
   // and enable continuous mode data acquisition Mmode (bits [3:0]), 0010 for 8 Hz and 0110 for 100 Hz sample rates
   writeByte(AK8963_ADDRESS, AK8963_CNTL, Mscale << 4 | Mmode); // Set magnetometer data resolution and sample ODR
-  delay(10);
+ // delay(10);
 }
 
 
