@@ -3,7 +3,7 @@
 
 const char* ssid = "Localhost";
 const char* password = "8976152032";
-int isconnected=0;
+
 WiFiUDP Udp;
 
 void wifi_connect(){
@@ -12,6 +12,9 @@ void wifi_connect(){
     delay(500);
    Serial.print(".");
   }
-  else
-  isconnected=1
-  }
+}
+
+//
+//Udp.beginPacket("192.168.0.105", 9005);
+//Udp.write(sensor_data);
+//Udp.endPacket();
