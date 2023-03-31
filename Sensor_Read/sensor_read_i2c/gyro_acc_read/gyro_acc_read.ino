@@ -43,6 +43,26 @@ void loop() {
             prev_ms = millis();
         }
     }
+  int firebutton  = digitalRead(D5);
+  int runbuttton  = digitalRead(D6);
+
+  if(firebutton){
+  sensorData = "f,1,1,1";
+  Serial.print(firebutton);
+  //Serial.println(sensorData);
+  Udp.beginPacket("192.168.0.105", 9005);
+  Udp.print(sensorData);
+  Udp.endPacket();
+  }
+  if(runbuttton){
+  sensorData = "r,1,1,1";
+  Serial.print(0);
+  //Serial.println(sensorData);
+  Udp.beginPacket("192.168.0.105", 9005);
+  Udp.print(sensorData);
+  Udp.endPacket();
+    
+    } 
 }
 
 void print_roll_pitch_yaw() {
